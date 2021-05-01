@@ -1,0 +1,53 @@
+<%- include('header'); -%>
+	<div class="container-fluid  mt-3 mb-5">
+		<div class="row align-items-start">
+		    <div class="col-lg-9 mb-5 pt-5">
+			    <h2 class="text-dark"> Welcome to BlogSite</h2  >
+			    <i>
+				    <ul>
+				    	<li>
+				    		Signup
+				    	</li>
+				    	<li>
+				    		Login
+				    	</li>
+				    	<li>
+				    		Create Your Blogs 
+				    	</li>
+				    	<li>
+				    		Share it with Your Friends
+				    	</li>
+				    </ul>
+			    </i>
+			    <div class="container pl-5">
+				    <% for(var i=0;i<articles.length ;i++){ %>   
+				    	<% var shortstring = articles[i].article.substring(0,200); %>
+				    	<div class="my-3">
+					    	<a href="/post/<%=articles[i]._id%>" class="h5 link-dark"><%=articles[i].heading%></a><br>
+					    	<i class="fs-6 fw-lighter  mt-1">&nbsp&nbsp <%=shortstring %>...
+					    		<a href="/post/<%= articles[i]._id %>">Read  More</a></i>
+				    	</div>
+				    <% } %>
+			    </div>
+		    </div>
+		    <div class=" col-lg-3 col-10 m-auto mb-5 mt-0" >
+		    	<main class="pt-5 justify-content-center col-lg-11 col-md-8  m-auto">
+					<form action="/subscription" method="post" class="form-main text-white bg-secondary p-5 ">
+					    <img class="mb-4" src="images/logo.jpg" alt="" style="width:10vmax; height:10vmax;">
+					    <h1 class="h3 mb-3 fw-normal text-white">Subscribe to BlogSite</h1>
+					    <input type="text" name="fName" class="form-control top" placeholder="First Name" required >
+					    <input type="text" name="lName" class="form-control mid" placeholder="Last Name" required >
+					    <input type="email"  name="email" class="form-control btm" placeholder="Email" required>
+					    <div class="checkbox mb-3">
+					      <label>
+					        <input type="checkbox" value="remember-me"> I agree to the conditions of BlogSite
+					      </label>
+				   		</div>
+				    	<button class=" btn btn-lg btn-outline-light" type="submit">Signup</button>
+				  	</form>
+				</main>
+		    </div>
+		</div>
+	</div>
+
+<%- include('footer'); -%>

@@ -1,0 +1,73 @@
+<%- include('header'); -%>
+	<div class="row align-items-start mt-5">
+		<div class="col-lg-3 col-sm-3 col-5 m-auto mt-3">
+			<div>
+
+				<img class="m-auto float-end mt-0" alt="Please Upload your pic" src="uploads/<%=user._id %>" id="pp"
+					style="width:100%; height:100%;">
+				<form method="post" action="/profilepic" enctype="multipart/form-data">
+					<div class="fileUpload float-end btn btn-sm btn-info">
+						<span><img src="images/addimg.png" width="25px" height="25px"></span>
+						<input type="file" name="profileimg" onchange="this.form.submit()" class="upload" />
+					</div>
+				</form>
+			</div>
+			<br>
+			<div class="text-secondary fst-italic text-center h3">
+				<%=user.username%>
+			</div>
+		</div>
+		<div class="col-md-7 col-10 m-auto mt-3">
+			<div class="">
+				<h2 class=" h1 text-dark fst-italic text-center">Your Blogs</h2>
+				<div class="">
+					<% if(articles.length==0){ %>
+						<div class="m-auto fst-italic">
+							<ul>
+								<li>
+									<a href="/compose" clas="text-decoration-none">Compose</a> Blogs
+								</li>
+								<li>
+									Upload Your profile
+								</li>
+								<li>
+									Enjoy
+								</li>
+							</ul>
+						</div>
+						<% } %>
+
+
+							<% for(var i=0;i<articles.length ;i++){ %>
+								<% var shortstring=articles[i].article.substring(0,250); %>
+									<div class="my-3">
+										<a href="/delete/<%=articles[i]._id%>"
+											class="float-end btn btn-sm btn-outline-secondary ">Delete</a>
+										<a href="/post/<%=articles[i]._id%>" class="h5 link-dark">
+											<%=articles[i].heading%>
+										</a>
+										<br>
+										<i class="fs-6 fw-lighter  mt-1 ">&nbsp&nbsp <%=shortstring %>...
+												<a href="/post/<%= articles[i]._id %>">Read More</a>
+										</i>
+									</div>
+									<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript">
+		let loadImage = function () {
+			var image = new Image();
+			var url_image = "uploads/<%=user._id %>"
+			image.src = url_image;
+			if (image.width == 0) {
+			} else {
+				$(#pp).attr('src', "images/defaultuserpic")
+			}
+			loadImage();
+		}
+	</script>
+
+	<%- include('footer'); -%>

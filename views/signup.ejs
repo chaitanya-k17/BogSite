@@ -1,0 +1,35 @@
+<%- include('header'); -%>
+
+
+<form action="/signup" class=" col-lg-4 col-md-6 m-auto m-auto mt-2 mb-5 p-4" method="POST">
+<div class="input-group mt-3">
+  <span class="input-group-text bg-secondary text-white">First name</span>
+  <input type="text" aria-label="First name" name="fname" class="form-control" required autocomplete="off">
+</div>
+<div class="input-group mt-3">
+  <span class="input-group-text bg-secondary text-white">Last name</span>
+  <input type="text" aria-label="First name" name="lname" class="form-control" required autocomplete="off">
+</div>
+<div class="input-group mt-3">
+  <span class="input-group-text bg-secondary text-white">Username</span>
+  <input type="text" aria-label="First name" name="uname" class="form-control" required autocomplete="off">
+   </div><div>
+  <div id="UsernameHelp" class="form-text d-block">Try to keep simple and unique Username</div>
+</div>
+<div class="input-group mt-3">
+  <span class="input-group-text bg-secondary text-white">Email Adress</span>
+  <input type="email" aria-label="First name" name="email" class="form-control" required autocomplete="off">
+</div>
+<div class="input-group mt-3">
+  <span class="input-group-text bg-secondary text-white">Password</span>
+  <input type="password" aria-label="First name" name="password" class="form-control" required autocomplete="off">
+  </div><div class="mb-4">
+  <div id="passwordHelp" class="form-text d-block">Never share your Credentials with anyone else.</div>
+</div>
+  <div class="mb-5 float-end">
+    <label class="form-text fs-5 ">&nbsp&nbspAn existing User.  <a href="/login" class="text-decoration-none text-primary">Login</a></label>
+  </div>
+  <button type="submit" class="btn btn-outline-secondary" name="submit">Signup</button>
+</form>
+
+<%- include('footer'); -%>
